@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3rcw1qkv6143"]
+
+[ext_resource type="Script" path="res://Scenes/menus/gameover.gd" id="1_yp1gk"]
+
+[node name="gameover" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yp1gk")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 72.0
+offset_right = 468.0
+offset_bottom = 272.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Game Over!"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="retry" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Retry"
+metadata/_edit_lock_ = true
+
+[node name="mainmenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Return to Menu"
+metadata/_edit_lock_ = true
+
+[node name="exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Close Game"
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="VBoxContainer/retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="VBoxContainer/mainmenu" to="." method="_on_mainmenu_pressed"]
+[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]
