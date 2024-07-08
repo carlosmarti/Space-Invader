@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var bulletDamage = 10
-@export var bulletSpeed = 150
+@export var bulletSpeed = 200
 var parentName
 var direction
 

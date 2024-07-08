@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0n1d8bs0gjdf"]
+
+[ext_resource type="Script" path="res://scenes/planets/planet.gd" id="1_qsuxl"]
+[ext_resource type="PackedScene" uid="uid://dfedtc25encdc" path="res://scenes/planets/resource.tscn" id="2_lcami"]
+[ext_resource type="Texture2D" uid="uid://d16m1ysmvt54d" path="res://images/planet/planet.png" id="2_mou5t"]
+
+[sub_resource type="Animation" id="Animation_68hcf"]
+resource_name = "attacked"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.6, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(7, -4), Vector2(3, 9), Vector2(-7, 8), Vector2(-10, -5), Vector2(-4, 8), Vector2(6, -4), Vector2(-9, 4), Vector2(-3, 2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jhxo2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, -4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0f8ob"]
+_data = {
+"RESET": SubResource("Animation_jhxo2"),
+"attacked": SubResource("Animation_68hcf")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hjwju"]
+radius = 36.0
+
+[node name="Planet" type="Area2D"]
+script = ExtResource("1_qsuxl")
+resource = ExtResource("2_lcami")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, -4)
+texture = ExtResource("2_mou5t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0f8ob")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_hjwju")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

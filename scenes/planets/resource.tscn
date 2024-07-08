@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfedtc25encdc"]
+
+[ext_resource type="Script" path="res://scenes/planets/resource.gd" id="1_qnekm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_saalc"]
+radius = 19.0
+height = 38.0
+
+[node name="resource" type="Area2D" groups=["resource"]]
+script = ExtResource("1_qnekm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_saalc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

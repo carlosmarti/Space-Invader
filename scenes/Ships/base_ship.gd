@@ -12,7 +12,7 @@ func shoot():
 
 func takeDamage(amount):
 	health -= amount
-	print("Amount of health lef: ", health)
+	print("Amount of health left: ", health)
 
 func getHealth():
 	return health
