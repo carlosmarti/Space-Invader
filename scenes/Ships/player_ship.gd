@@ -1,11 +1,13 @@
 extends "res://scenes/Ships/base_ship.gd"
 
 @export var angularSpeed = 20
-@onready var bulletPosition = $BulletPosition
 @export var minAngle = deg_to_rad(0.0)
 @export var maxAngle = deg_to_rad(90.0)
 @export var lerpAnglWeight = 3
 @export var playerSpeed = 5
+
+@onready var bulletPosition = $BulletPosition
+@onready var beam = $Beam
 
 func _input(event):
 	if event.is_action_pressed("shoot"):
@@ -24,6 +26,15 @@ func _physics_process(delta):
 		velocity = lerp(Vector2.UP, Vector2.UP.rotated(rotation) * SPEED * playerSpeed, 2 * delta)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, 1 * delta)
+	
+	#turn on and off the beam to destroy planets
+	if Input.is_action_just_pressed("beam"):
+		beam.visible = true
+		beam.set_monitorable(true)
+	
+	if Input.is_action_just_released("beam"):
+		beam.visible = false
+		beam.set_monitorable(false)
 	
 	move_and_slide()
 

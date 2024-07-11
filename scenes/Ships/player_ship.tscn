@@ -23,8 +23,11 @@ texture = ExtResource("3_fpo4t")
 [node name="BulletPosition" type="Node2D" parent="." index="3" groups=["playerShip"]]
 position = Vector2(0, -11)
 
-[node name="Beam" type="Area2D" parent="." index="4"]
+[node name="Beam" type="Area2D" parent="." index="4" groups=["beam"]]
+visible = false
 position = Vector2(0, -26)
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Beam" index="0"]
 position = Vector2(0, -14)

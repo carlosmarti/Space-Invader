@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/planets/resource.gd" id="1_qnekm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_saalc"]
-radius = 19.0
-height = 38.0
+radius = 14.0
+height = 28.0
 
 [node name="resource" type="Area2D" groups=["resource"]]
 script = ExtResource("1_qnekm")
