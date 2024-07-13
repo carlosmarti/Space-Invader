@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var health = 100
-@export var SPEED = 600.0
+@export var SPEED = 200.0
 @onready var bulletPreload = preload("res://scenes/Ships/bullet.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

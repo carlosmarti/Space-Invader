@@ -19,11 +19,14 @@ func _physics_process(delta):
 	var direction = Input.get_axis("Left-key", "Right-key")
 	if direction != 0:
 		rotation = lerp_angle(rotation, rotation + direction, lerpAnglWeight * delta)
-		#lerpAnglWeight += delta
+		lerpAnglWeight += delta
 	
 	
 	if Input.is_action_pressed("Up"):
-		velocity = lerp(Vector2.UP, Vector2.UP.rotated(rotation) * SPEED * playerSpeed, 2 * delta)
+		if Input.is_action_pressed("boost"):
+			velocity = lerp(Vector2.UP, Vector2.UP.rotated(rotation) * SPEED * 1.5 , delta)
+		else:
+			velocity = lerp(Vector2.UP, Vector2.UP.rotated(rotation) * SPEED , delta)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, 1 * delta)
 	
@@ -36,7 +39,7 @@ func _physics_process(delta):
 		beam.visible = false
 		beam.set_monitorable(false)
 	
-	move_and_slide()
+	var collidingInfo = move_and_collide(velocity)
 
 func shoot():
 	var bulletInstance = bulletPreload.instantiate()

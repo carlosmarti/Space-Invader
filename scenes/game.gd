@@ -5,11 +5,11 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pass
+	#DialogueManager.show_example_dialogue_balloon(introResources, "start")
+	#DialogueManager.dialogue_ended.connect(introDialogueFinished)
 	
-	DialogueManager.show_example_dialogue_balloon(introResources, "start")
-	DialogueManager.dialogue_ended.connect(introDialogueFinished)
-	
-	freezeCharacters()
+	#freezeCharacters()
 
 func freezeCharacters():
 	$PlayerShip.set_physics_process(false)

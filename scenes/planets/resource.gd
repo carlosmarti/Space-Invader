@@ -29,3 +29,11 @@ func _ready():
 func _process(delta):
 	position += direction.normalized() * velocity * delta
 	rotation += randNum * delta
+
+
+func _on_body_entered(body):
+	var groups = body.get_groups()
+	var firstGroup = groups[0]
+	if firstGroup == "player-ship":
+		print("resource collected")
+		queue_free()
