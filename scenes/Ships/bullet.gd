@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var bulletDamage = 10
 @export var bulletSpeed = 600
+var MAXSCREENSIZE = Vector2(640, 360)
 var parentName
 var direction
 
@@ -15,8 +16,10 @@ func _physics_process(delta):
 	
 	if collidingInfo and collidingInfo.get_collider():
 		var shipName = collidingInfo.get_collider().name
-		if shipName == "EnemyShip":
-			collidingInfo.get_collider().takeDamage(bulletDamage)
+		if shipName == "EnemyShip" or shipName == "PlayerShip":
+			collidingInfo.get_collider().takeDamage(bulletDamage, shipName)
 			queue_free()
 	
+	if position.x > MAXSCREENSIZE.x or position.x < 0 or position.y > MAXSCREENSIZE.y or position.y < 0:
+		queue_free()
 

@@ -19,7 +19,6 @@ func _physics_process(delta):
 	var direction = Input.get_axis("Left-key", "Right-key")
 	if direction != 0:
 		rotation = lerp_angle(rotation, rotation + direction, lerpAnglWeight * delta)
-		lerpAnglWeight += delta
 	
 	
 	if Input.is_action_pressed("Up"):
@@ -39,6 +38,7 @@ func _physics_process(delta):
 		beam.visible = false
 		beam.set_monitorable(false)
 	
+	#move the character 
 	var collidingInfo = move_and_collide(velocity)
 
 func shoot():

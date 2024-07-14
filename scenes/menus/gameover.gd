@@ -1,6 +1,6 @@
 extends Control
 
-@onready var mainmenu = 'res://Scenes/main_menu.tscn'
+@onready var mainmenu = 'res://Scenes/menus/main_menu.tscn'
 
 
 

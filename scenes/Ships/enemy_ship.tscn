@@ -7,13 +7,21 @@
 [node name="EnemyShip" groups=["enemyShip"] instance=ExtResource("1_ssoux")]
 script = ExtResource("2_bgar3")
 movementSpeed = 50
+rotationSpeed = 2
 
 [node name="Sprite2D" parent="." index="1"]
-rotation = 3.14159
 texture = ExtResource("3_5kco6")
 
 [node name="MovementTimer" type="Timer" parent="." index="3"]
 wait_time = 2.0
 autostart = true
 
+[node name="ShootingTimer" type="Timer" parent="." index="4"]
+wait_time = 3.0
+autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="." index="5"]
+position = Vector2(0, -11)
+
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]

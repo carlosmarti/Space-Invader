@@ -17,6 +17,7 @@ position = Vector2(304, 202)
 
 [node name="EnemyShip" parent="." instance=ExtResource("2_cxucs")]
 position = Vector2(302, 90)
+rotation = 3.14159
 
 [node name="gameover" parent="." instance=ExtResource("3_sap2h")]
 visible = false
@@ -27,4 +28,4 @@ visible = false
 [node name="ResourceGroup" type="Node" parent="."]
 
 [node name="Planet" parent="." instance=ExtResource("7_rqyhn")]
-position = Vector2(192, 185)
+position = Vector2(308, -62)
